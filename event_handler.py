@@ -1,3 +1,6 @@
+from datetime import datetime
+from functools import wraps
+
 from google.assistant.library.event import EventType
 
 from effect import RunningCircle
@@ -5,20 +8,14 @@ from subprocess import DEVNULL, STDOUT, check_call
 
 
 class Action:
-    __states = []
-
     @staticmethod
     def listen():
-        # todo: remove from here and make actions with decorator that prevents running threads simultaniously
-        RunningCircle(None).stop()
         RunningCircle(None).run()
 
     @staticmethod
     def answer():
-        RunningCircle(None).stop()
-        RunningCircle(None).breath()
         RunningCircle(None).run()
-
+        RunningCircle(None).breath()
 
     @staticmethod
     def clear():

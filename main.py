@@ -8,7 +8,7 @@ import google.oauth2.credentials
 from google.assistant.library import Assistant
 
 from effect import RunningCircle
-from event_handler import EVENT_MAP
+from event_handler import EVENT_MAP, Action
 from json_client import HyperionConnection
 
 
@@ -35,5 +35,9 @@ if __name__ == '__main__':
     with HyperionConnection('localhost', 19444) as hyperion_socket:
         RunningCircle(hyperion_socket)
 
+        # Action.answer()
+        # sleep(2)
+        # Action.clear()
+        # pass
         with Assistant(credentials, 'osmc-c6683') as assistant:
             event_loop(assistant)

@@ -11,18 +11,10 @@ def run_in_thread(fn):
 
 
 class EffectSingleTone(object):
-    __instance = None
+    _instance = None
 
     def __new__(cls, *args, **kwargs):
-        if EffectSingleTone.__instance is None:
-            EffectSingleTone.__instance = object.__new__(cls)
-            # EffectSingleTone.__instance = object.__init__(cls)
+        if EffectSingleTone._instance is None:
+            EffectSingleTone._instance = object.__new__(cls)
 
-            EffectSingleTone.__instance.__init__(*args, **kwargs)
-            pass
-            # EffectSingleTone.__instance._args = args
-            # EffectSingleTone.__instance._kwargs = kwargs
-
-        return EffectSingleTone.__instance
-
-
+        return EffectSingleTone._instance
