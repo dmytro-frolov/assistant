@@ -106,7 +106,7 @@ class RunningCircle(Effect, EffectSingleTone):
         increment = 9
         increment %= self.led_count
 
-        rotation_time = max(0.1, 3)
+        rotation_time = 3
         sleep_time = rotation_time / self.led_count
         while sleep_time < 0.05:
             increment *= 1  # if 0 it'll just pause
