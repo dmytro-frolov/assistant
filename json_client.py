@@ -24,8 +24,8 @@ class HyperionConnection:
             self.s.connect((self.host, self.port))
 
         except Exception as e:
-            print("Error on connection to ", self.host, ":", self.port, "\nMessage: ", e.args)
-
+            print("Error connecting to ", self.host, ":", self.port, "\nMessage: ", e.args)
+            raise e
         else:
             return self
 
@@ -58,4 +58,12 @@ class HyperionConnection:
 
         except Exception as e:
             print("Error while sending the led data\nMessage: ", e.args)
-            raise
+            raise e
+
+    def send_data(self, json_data):
+        try:
+            self.s.send(bytearray(json_data, encoding='utf8'))
+
+        except Exception as e:
+            print("Error while sending the data\nMessage: ", e.args)
+            raise e

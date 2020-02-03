@@ -23,10 +23,11 @@ class Effect(ABC):
 
         self.led_data = bytearray()
 
-
-
     def stop(self):
         self.running = False
+
+    def clear_all(self):
+        self.hyperion_socket.send_data('{"command":"clearall"}\n')
 
     @abstractmethod
     def fill(self):
